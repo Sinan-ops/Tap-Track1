@@ -1,0 +1,123 @@
+.dashboard {
+  padding: 70px 24px 24px;
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.75rem;
+}
+
+.dashboard-welcome {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--foreground);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 16px 60px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  min-height: 135px;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.2);
+}
+
+.stat-card h3 {
+  color: #8da0b8;
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.stat-value {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #2aa0ff;
+  margin: 0;
+}
+
+.quick-stats-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 16px 60px rgba(0, 0, 0, 0.12);
+}
+
+.quick-stats-header h2 {
+  margin: 0;
+  color: var(--foreground);
+  font-size: 1.15rem;
+}
+
+.quick-stats-header p {
+  margin: 0.4rem 0 1.25rem;
+  color: #8da0b8;
+}
+
+.quick-stats-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.quick-stat {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 1rem 1.1rem;
+  text-align: center;
+}
+
+.quick-stat-value {
+  margin: 0;
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #2aa0ff;
+}
+
+.quick-stat-label {
+  margin: 0.5rem 0 0;
+  color: #8da0b8;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 960px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .dashboard {
+    padding: 60px 18px 20px;
+  }
+
+  .stats-grid,
+  .quick-stats-list {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-welcome {
+    font-size: 2.4rem;
+  }
+}

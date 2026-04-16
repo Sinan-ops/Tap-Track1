@@ -1,0 +1,19 @@
+{
+  "name": "tap-track",
+  "version": "1.0.0",
+  "description": "Modern attendance tracking system",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "install-all": "npm install && npm install --workspace=frontend && npm install --workspace=backend",
+    "dev": "concurrently \"npm run dev --workspace=frontend\" \"npm run dev --workspace=backend\"",
+    "build": "npm run build --workspace=frontend && npm run build --workspace=backend",
+    "start": "npm start --workspace=backend"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  }
+}

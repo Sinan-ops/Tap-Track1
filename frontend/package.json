@@ -1,0 +1,27 @@
+{
+  "name": "tap-track-frontend",
+  "version": "1.0.0",
+  "description": "Tap-Track Frontend",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0",
+    "axios": "^1.5.0",
+    "date-fns": "^2.30.0",
+    "recharts": "^2.8.0",
+    "jspdf": "^2.5.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.1.0",
+    "vite": "^5.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "vite"
+  }
+}

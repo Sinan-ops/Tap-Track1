@@ -1,0 +1,479 @@
+.attendance-container {
+  max-width: 1400px;
+  margin: 96px auto 24px;
+  padding: 1rem;
+  color: var(--foreground);
+  background: var(--background);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.attendance-header {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--card);
+  z-index: 5;
+}
+
+.attendance-subtitle {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.attendance-controls {
+  margin-top: 0.75rem;
+}
+
+.attendance-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.class-select,
+.date-picker-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.date-select {
+  padding: 0.8rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  min-width: 180px;
+  cursor: pointer;
+  background: var(--input);
+  color: var(--foreground);
+}
+
+.calendar-btn {
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  border-left: none;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 0.8rem 0.6rem;
+  cursor: pointer;
+  color: var(--foreground);
+  transition: background-color 0.2s ease;
+}
+
+.calendar-btn:hover {
+  background: var(--muted);
+}
+
+.calendar-popup {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  background: var(--popover);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.6rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-top: 0.25rem;
+  min-width: 220px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.calendar-month {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.calendar-nav-btn {
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  color: var(--foreground);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.calendar-nav-btn:hover {
+  background: var(--muted);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.calendar-day-header {
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.7rem;
+  color: var(--muted-foreground);
+  padding: 0.2rem 0.1rem;
+  background: var(--muted);
+  border-radius: var(--radius-sm);
+}
+
+.calendar-day {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  color: var(--foreground);
+}
+
+.calendar-day.current-month:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.calendar-day.selected {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  font-weight: 600;
+}
+
+.calendar-day.today {
+  border: 1px solid var(--border);
+}
+
+.calendar-day.other-month {
+  color: var(--muted-foreground);
+  cursor: default;
+}
+
+.calendar-day.other-month:hover {
+  background: transparent;
+}
+
+.calendar-subheader {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.4rem;
+}
+
+.calendar-today-btn {
+  border: 1px solid var(--border);
+  background: var(--secondary);
+  color: var(--foreground);
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  padding: 0.2rem 0.4rem;
+  cursor: pointer;
+}
+
+.calendar-today-btn:hover {
+  background: var(--muted);
+}
+
+.attendance-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.sort-menu-container {
+  position: relative;
+}
+
+.btn-sort {
+  padding: 0.6rem 1rem;
+  background: var(--secondary);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.btn-sort:hover {
+  background: var(--muted);
+}
+
+.sort-menu-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+  background: var(--popover);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  min-width: 200px;
+  margin-top: 0.25rem;
+  overflow: hidden;
+}
+
+.sort-option {
+  display: block;
+  width: 100%;
+  padding: 0.65rem 1rem;
+  background: var(--popover);
+  color: var(--foreground);
+  border: none;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.sort-option:last-child {
+  border-bottom: none;
+}
+
+.sort-option:hover {
+  background: var(--muted);
+}
+
+.sort-option.active {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  font-weight: 600;
+}
+
+.bulk-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.btn-refresh,
+.btn-bulk {
+  padding: 0.5rem 0.7rem;
+  border: 1px solid var(--border);
+  background: var(--secondary);
+  color: var(--foreground);
+  border-radius: var(--radius);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.btn-refresh:disabled,
+.btn-bulk:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-bulk:hover:not(:disabled),
+.btn-refresh:hover:not(:disabled) {
+  background: var(--muted);
+}
+
+.btn-submit,
+.btn-edit {
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 1.6rem;
+}
+
+.btn-submit {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.btn-submit:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-edit {
+  background: var(--secondary);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+}
+
+.btn-edit:hover {
+  background: var(--muted);
+}
+
+.date-overview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.date-overview-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.6rem;
+  font-size: 0.85rem;
+  color: var(--foreground);
+}
+
+.attendance-note {
+  margin-bottom: 1rem;
+}
+
+.attendance-note label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-size: 0.85rem;
+  color: var(--muted-foreground);
+}
+
+.attendance-note-textarea {
+  width: 100%;
+  padding: 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--input);
+  color: var(--foreground);
+  font-size: 0.85rem;
+  resize: vertical;
+  min-height: 70px;
+}
+
+.attendance-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.35rem;
+}
+
+.stat-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.2rem;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card.present {
+  border-left: 4px solid oklch(0.6 0.2 140);
+}
+
+.stat-card.absent {
+  border-left: 4px solid var(--destructive);
+}
+
+.stat-card.late {
+  border-left: 4px solid oklch(0.65 0.18 42);
+}
+
+.stat-value {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--foreground);
+  margin-bottom: 0.35rem;
+}
+
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.attendance-table-container {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.attendance-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.attendance-table tbody tr:hover {
+  background: var(--muted);
+}
+
+.status-column {
+  text-align: center;
+  width: 80px;
+}
+
+.status-column input[type='radio'] {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+
+.no-data {
+  text-align: center;
+  color: var(--muted-foreground);
+  padding: 2rem;
+  font-size: 1.1rem;
+}
+
+.error-message {
+  background-color: rgba(245, 101, 101, 0.1);
+  color: var(--destructive);
+  padding: 1rem;
+  border-radius: 0.8rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid var(--destructive);
+}
+
+@media (max-width: 768px) {
+  .attendance-controls {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .class-select,
+  .date-select {
+    min-width: 100%;
+  }
+
+  .attendance-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .attendance-table {
+    font-size: 0.88rem;
+  }
+}
+
