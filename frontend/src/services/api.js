@@ -1,10 +1,15 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+// This is the "Magic Fix"
+// In development, Vite proxies '/api' to localhost:5000
+// In production, the browser looks at tap-track1-production.up.railway.app/api
+const API_BASE_URL = '/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
 });
+
+// ... rest of your code stays exactly the same
 
 // Add token to requests
 api.interceptors.request.use((config) => {
