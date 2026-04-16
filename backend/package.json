@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "node --watch src/server.js",
     "start": "node src/server.js",
-    "build": "echo 'Backend build complete (no-op)'",
+    "build": "echo 'Backend build not required, skipping...'",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
