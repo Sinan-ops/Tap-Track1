@@ -1,10 +1,10 @@
-import axios from 'axios';
+import api from './api'; 
 
-const API_URL = import.meta.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+// You can delete the axios import and the API_URL constant 
+// because they are now handled inside the api.js file.
 
-const api = axios.create({
-  baseURL: API_URL,
-});
+const normalizeDate = (value) => {
+// ... keep everything else the same ...
 
 const normalizeDate = (value) => {
   if (!value) return '';
