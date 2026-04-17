@@ -1,14 +1,15 @@
 import axios from 'axios';
 
-// This is the "Magic Fix"
-// In development, Vite proxies '/api' to localhost:5000
-// In production, the browser looks at tap-track1-production.up.railway.app/api
-const API_BASE_URL = '/api';
+// Detect if we are on Railway or Localhost
+const API_BASE_URL = import.meta.env.MODE === 'production' 
+  ? 'https://tap-track1-production.up.railway.app/api' // Your Backend Railway URL
+  : '/api'; // Local development proxy
 
 const api = axios.create({
   baseURL: API_BASE_URL,
 });
 
+// ... rest of your code stays the same
 // ... rest of your code stays exactly the same
 
 // Add token to requests
