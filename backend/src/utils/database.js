@@ -1,16 +1,13 @@
-import pkg from 'pg';
-import dotenv from 'dotenv';
+import pg from 'pg';
+const { Pool } = pg;
 
-dotenv.config();
-
-const { Pool } = pkg;
+// 1. Check if we are in production
+const isProduction = process.env.NODE_ENV === 'production';
 
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || 'postgresql://postgres:password@localhost:5432/tap_track',
-});
-
-pool.on('error', (err) => {
-  console.error('Unexpected error on idle client', err);
+  connectionString: process.env.DATABASE_URL,
+  // 2. Only apply SSL if we are on Railway (production)
+  ssl: isProduction ? { rejectUnauthorized: false } : false
 });
 
 export default pool;
