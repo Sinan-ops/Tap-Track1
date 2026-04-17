@@ -68,6 +68,7 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
+  // CRITICAL FIX: Included 'register' in the value object below
   const value = {
     currentUser,
     setCurrentUser,
@@ -75,6 +76,7 @@ export const AuthProvider = ({ children }) => {
     error,
     setError,
     login,
+    register, 
     logout,
   };
 
@@ -88,4 +90,3 @@ export const useAuth = () => {
   }
   return context;
 };
-
