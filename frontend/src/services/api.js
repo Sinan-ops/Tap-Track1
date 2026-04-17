@@ -16,6 +16,7 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+// Auth Exports
 export const login = async (email, password) => {
   const response = await api.post('/auth/login', { email, password });
   return response.data;
@@ -31,6 +32,21 @@ export const logout = async () => {
   return response.data;
 };
 
-// ... keep all your other attendance/user exports here ...
+// Dashboard/Attendance Exports (This is what was missing!)
+export const getAttendanceStats = async () => {
+  const response = await api.get('/attendance/stats');
+  return response.data;
+};
+
+// Attendance Actions
+export const recordCheckIn = async () => {
+  const response = await api.post('/attendance/checkin');
+  return response.data;
+};
+
+export const recordCheckOut = async () => {
+  const response = await api.post('/attendance/checkout');
+  return response.data;
+};
 
 export default api;
