@@ -1,16 +1,15 @@
 import axios from 'axios';
 
-// Detect if we are on Railway or Localhost
+// This points specifically to your Railway backend domain
 const API_BASE_URL = import.meta.env.MODE === 'production' 
-  ? 'https://tap-track1-production.up.railway.app/api' // Your Backend Railway URL
-  : '/api'; // Local development proxy
+  ? 'https://tap-track1-production.up.railway.app/api' 
+  : '/api'; 
 
 const api = axios.create({
   baseURL: API_BASE_URL,
 });
 
-// ... rest of your code stays the same
-// ... rest of your code stays exactly the same
+// Leave everything else below this exactly as it was
 
 // Add token to requests
 api.interceptors.request.use((config) => {
