@@ -1,7 +1,4 @@
-import api from './api'; 
-
-// You can delete the axios import and the API_URL constant 
-// because they are now handled inside the api.js file.
+import api from './api';
 
 const normalizeDate = (value) => {
   if (!value) return '';
@@ -10,25 +7,14 @@ const normalizeDate = (value) => {
   return date.toISOString().split('T')[0];
 };
 
-// Add auth token to requests
-api.interceptors.request.use((config) => {
-  const token = localStorage.getItem('authToken');
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
-});
-
 export const SyncService = {
   // Classes operations
   getClasses: async (userId) => {
-    // userId from JWT token, query param ignored by backend
     const response = await api.get('/classes');
     return response.data;
   },
 
   createClass: async (name, userId) => {
-    // userId from JWT token, only name needed in request body
     const response = await api.post('/classes', { name });
     return response.data;
   },
@@ -50,7 +36,6 @@ export const SyncService = {
   },
 
   createStudent: async (name, rollNumber, classId, userId) => {
-    // userId from JWT token, only name/roll_number/class_id needed
     const response = await api.post('/students', {
       name,
       roll_number: rollNumber,
@@ -76,10 +61,8 @@ export const SyncService = {
   getAttendanceRecords: async (classId, date) => {
     try {
       const response = await api.get(`/attendance/class/${classId}`);
-      console.log(`API: Fetched all records for class ${classId}:`, response.data);
       const normalizedDate = normalizeDate(date);
       const filtered = response.data.filter((record) => normalizeDate(record.date) === normalizedDate);
-      console.log(`✅ Filtered results: ${filtered.length} records match date ${normalizedDate}`, filtered);
       return filtered;
     } catch (error) {
       console.error(`API Error fetching attendance:`, error.response?.data || error.message);
@@ -98,7 +81,6 @@ export const SyncService = {
   },
 
   createAttendanceRecord: async (classId, studentId, date, status) => {
-    // userId from JWT token, only class_id/student_id/date/status needed
     try {
       const response = await api.post('/attendance', {
         class_id: classId,
@@ -106,10 +88,9 @@ export const SyncService = {
         date,
         status,
       });
-      console.log(`API: Created attendance record for student ${studentId}:`, response.data);
       return response.data;
     } catch (error) {
-      console.error(`API Error creating record for student ${studentId}:`, error.response?.data || error.message);
+      console.error(`API Error creating record:`, error.response?.data || error.message);
       throw error;
     }
   },
@@ -117,10 +98,9 @@ export const SyncService = {
   updateAttendanceRecord: async (recordId, status) => {
     try {
       const response = await api.put(`/attendance/${recordId}`, { status });
-      console.log(`API: Updated attendance record ${recordId}:`, response.data);
       return response.data;
     } catch (error) {
-      console.error(`API Error updating record ${recordId}:`, error.response?.data || error.message);
+      console.error(`API Error updating record:`, error.response?.data || error.message);
       throw error;
     }
   },
