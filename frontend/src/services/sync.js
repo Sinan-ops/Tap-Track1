@@ -4,9 +4,6 @@ import api from './api';
 // because they are now handled inside the api.js file.
 
 const normalizeDate = (value) => {
-// ... keep everything else the same ...
-
-const normalizeDate = (value) => {
   if (!value) return '';
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return String(value).split('T')[0];
